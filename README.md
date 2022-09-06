@@ -1,7 +1,7 @@
 # for_vladimir
 Здачки по Php
 
-1. Дана строка '<div><image class="thumbnail" src="myImage.png" /><span class="smallText">Some Text</span></div>'. 
+1. Дана строка ```<div><image class="thumbnail" src="myImage.png" /><span class="smallText">Some Text</span></div>```. 
 Получите название класса картинки (значение атрибута class) не используя регулярные выражения. 
 
 2. Дано предложение. +

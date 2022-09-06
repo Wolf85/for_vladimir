@@ -32,7 +32,9 @@ $arr = str_split($task_str);
 $res = array_count_values($arr);
 echo "<br>Result:";
 echo "<br>";
-print_r($res);
+foreach ($res as $k => $v) {
+    echo "<br>".$k." = ".$v;
+}
 
 
 //-----------------------------------------------------------------
@@ -109,12 +111,15 @@ echo "<br>";
 echo "<h2>TASK 5.<h2/> Дан массив целых чисел. Напишите скрипт, который выводит для каждого числа количество повторов".
 "(если повторов нет, то выводит число 1), при этом не используя никакой сортировки результирующего массива.<br>";
 echo "<p><i> Решение в лоб, но зато работает </i></p>";
-$arr = array(1, 2,3,4,5, 5,4,4,4,2);
+$arr = array(1, 2,3,6,5, 5,4,4,4,2);
 echo "Input array<br>". implode(" ",$arr);
 
 echo "<br>Result:";
 echo "<br>";
-print_r(array_count_values($arr));
+$arr2 = array_count_values($arr);
+foreach ($arr2 as $k => $v) {
+    echo "Key: " .$k." Count: ".$v.  "<br>";
+}
 
 
 //-----------------------------------------------------------------
@@ -197,6 +202,12 @@ function validateArray($val){
 }
 function runValidate($val)
 {
+    if (empty($val)){
+        throw new Exception('Input array is empty!');
+    }
+    foreach ($val as $k => $v) {
+        echo $k." =".$v. " <br>";
+    }
     if (validateArray($val)) {
         echo "Valid array: <br>";
         foreach ($val as $key => $v) {
@@ -206,7 +217,27 @@ function runValidate($val)
 }
 echo "Array from task<br>";
 runValidate($inputPerson);
-
+echo "<br><br>";
 echo "Test array: should be \"Name is not valid\" <br>";
 $inputPerson = ['name' => null, 'age' => 25, 'weight' => 82.5];
 runValidate($inputPerson);
+echo "<br>";
+echo "Test array: should be \"Name is not valid\" <br>";
+$inputPerson = ['name' => '', 'age' => 25, 'weight' => 82.5];
+runValidate($inputPerson);
+echo "<br><br>";
+echo "Test array: should be \"Age is not valid\" <br>";
+$inputPerson = ['name' => 'Ivan', 'age' => '25a', 'weight' => 82.5];
+runValidate($inputPerson);
+echo "<br>";
+$inputPerson = ['name' => 'Ivan', 'age' => 82.5, 'weight' => 82.5];
+runValidate($inputPerson);
+
+echo "<br><br>";
+echo "Test array: should be \"Weight is not valid\" <br>";
+$inputPerson = ['name' => 'Ivan', 'age' => '25a', 'weight' => null];
+runValidate($inputPerson);
+echo "<br>";
+$inputPerson = ['name' => 'Ivan', 'age' => 25, 'weight' => 'asd'];
+runValidate($inputPerson);
+

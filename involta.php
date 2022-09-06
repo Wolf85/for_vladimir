@@ -235,9 +235,9 @@ runValidate($inputPerson);
 
 echo "<br><br>";
 echo "Test array: should be \"Weight is not valid\" <br>";
-$inputPerson = ['name' => 'Ivan', 'age' => '25a', 'weight' => null];
+$inputPerson = ['name' => 'Ivan', 'age' => 24, 'weight' => null];
 runValidate($inputPerson);
 echo "<br>";
-$inputPerson = ['name' => 'Ivan', 'age' => 25, 'weight' => 'asd'];
+$inputPerson = ['name' => 'Ivan', 'age' => 25, 'weight' => '82.5a'];
 runValidate($inputPerson);
 
